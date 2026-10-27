@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <body>
+<title>Scientific Finishing School</title>
+
+<link rel="stylesheet" href="styl.css">
+
+
+</head>
+<body>
+    <div  id="aboutUS" style="display: block;">
+
+        <h1> About Scientific Finishing School</h1>
+
+        <p>
+
+Scientific Finishing School is a dedicated Matric Rewrite centre located at Roskrudge Building, Lusikisiki. We give learners a second chance to improve their matric results and open doors to university, college and bursary opportunities.
+
+We offer a wide range of subjects including Mathematics, Maths Literacy, Physical Sciences, Life Sciences, Agricultural Sciences, Geography, Economics, Business Studies, Accounting and English FAL.
+
+With experienced teachers, focused exam preparation, and accommodation available for learners from afar, we create a supportive environment where you can awake and pursue your future. Classes for 2027 start in January 2027, with exams in May/June and October/November 2027. <br><br>
+
+Find us on Facebook: Scientific Finishing School
+Contact: 083 754 5350 or 071 028 3244
+
+Scroll down to begin your applications.</p>
+<h1> Fees of Studies</h1>
+<p>Registration Fee : R600 (once-off and non refundable) <br>
+   For one subject  : R250 (monthly) <br>
+   For multiple subjects : R500 (monthly) <br>
+
+   Please note, the above fees are paid before you attend any classes.
+</p>
+        <img class="pic" src="picture.jpeg" alt="About us">
+    
+        <P>
+            This is where you get a chance to improve your results,
+            this is your turn for your redemption as you refused to settle for less.
+        </P>
+        <button type="button" onclick="apply()">APPLY</button>
+        </div>
+        
+    
+
+<div class="app-form" id="app-form" style="display: none;">
+  <h1>Scientific Finishing School</h1>
+  <p>Online Application 2027</p>
+  <label>Surname:</label>
+  <input type="text" id="surname" required><br><br>
+  <label>Name:</label>
+  <input type="text" id="learnerName" required><br><br>
+  <label>ID Number:</label>
+  <input type="text" id="idNumber" required><br><br>
+  <label>Cell Number:</label>
+  <input type="text" id="cellNumber" required><br><br>
+  <label>Email:</label>
+  <input type="email" id="email" required><br><br>
+  <label>Province:</label>
+  <select id="province" required>
+    <option value="  " selected.disabled></option>
+    <option>Eastern Cape</option>
+    <option>Gauteng</option>
+    <option>KZN</option>
+    <option>Limpopo</option>
+    <option>Western Cape</option>
+    <option >Free State</option>
+    <option >Mpumalanga</option>
+    <option >Northen Cape</option>
+  </select><br><br>
+  <label>Home Town:</label><input type="text" id="HomeTown" required><br><br>
+  <button type="button" onclick="nextPage()">Save And Continue</button>
+</div>
+
+<div class="kin" id="kin" style="display:none;">
+  <button type="button" onclick="prevPage()">Back</button>
+  <h2>Next of Kin</h2>
+  <label>Next of Kin Surname:</label><input type="text" id="kinSurname" required><br><br>
+  <label>Next of Kin Name:</label><input type="text" id="kinName" required><br><br>
+  <label>Next of Kin Cell:</label><input type="text" id="kinCell" inputmode="numeric"  required><br><br>
+  <button type="button" id="submitBtn" onclick="sendWhatsApp()">Submit Application</button>
+  <p id="status"></p>
+</div>
+
+
+<script>
+
+
+function apply(){document.getElementById('app-form').style.display='block';document.getElementById('kin').style.display='none';document.getElementById('aboutUS').style.display='none';}
+function nextPage(){document.getElementById('app-form').style.display='none';document.getElementById('kin').style.display='block';}
+function prevPage(){document.getElementById('app-form').style.display='block';document.getElementById('kin').style.display='none';}
+
+function sendWhatsApp(){
+  const btn=document.getElementById('submitBtn');
+  const status=document.getElementById('status');
+  
+  const surname=document.getElementById('surname').value.trim();
+  const name=document.getElementById('learnerName').value.trim();
+  const id=document.getElementById('idNumber').value.trim();
+  const phone=document.getElementById('cellNumber').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const province=document.getElementById('province').value;
+  const town=document.getElementById('HomeTown').value.trim();
+  const kinSurname=document.getElementById('kinSurname').value.trim();
+  const kinName=document.getElementById('kinName').value.trim();
+  const kinCell=document.getElementById('kinCell').value.trim();
+
+  if(!surname || !name || !id || !phone){
+    alert('Please fill Surname, Name, ID and Cell Number');
+    return;
+  }
+
+  btn.innerText="Sending..."; btn.disabled=true;
+  status.style.color="blue"; status.innerText="Sending...";
+
+  const MY_NUMBER="27605546897";
+  const MY_APIKEY="5843658";
+
+  const message=`*NEW SCIENTIFIC FINISHING SCHOOL 2027 APPLICATION*%0A%0A*Learner:* ${surname} ${name}%0A*ID:* ${id}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Province:* ${province} - ${town}%0A%0A*Next of Kin:* ${kinSurname} ${kinName}%0A*Kin Cell:* ${kinCell}`;
+
+  const url=`https://api.callmebot.com/whatsapp.php?phone=${MY_NUMBER}&text=${message}&apikey=${MY_APIKEY}`;
+
+  
+  new Image().src=url;
+
+  status.style.color="green";
+  status.innerText="✓ Sent!";
+  alert('Application sent!');
+
+  btn.innerText="Submit Application"; btn.disabled=false;
+}
+</script>
+</body>
+</html>

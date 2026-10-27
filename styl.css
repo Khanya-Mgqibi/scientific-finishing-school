@@ -1,0 +1,46 @@
+
+*{box-sizing:border-box}
+body{font-family:Arial;
+    background-image: url(sfs.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-attachment: fixed;
+    margin:0;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    padding:15px;
+    min-height:100vh}
+    
+#aboutUS, .app-form,.kin{width:100%;
+    max-width:500px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border:2px solid red;
+    padding:20px;
+    border-radius:12px}
+    
+button{background:#d40000;
+    color:white;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    margin-top:20px;
+    font-weight:bold;
+    cursor:pointer}
+label{font-weight:bold;} 
+input,select{width:100%;
+    padding:10px;
+    border:2px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+    margin-top:5px}
+#status{text-align:center;
+font-weight:bold;
+margin-top: 15px }
+h1{color: #d40000; font-size:22px}
+p{line-height:1.6; font-size:15px}
+.pic{width:100%; height:auto; border-radius:10px; margin:10px 0;}
